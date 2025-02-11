@@ -90,5 +90,119 @@
     </div>
   </div>
 
+  <!-- Use our custom birthday component -->
+  <annika-birthday></annika-birthday>
+
+  <script>
+    // Define a custom element for Annika's birthday card
+    class AnnikaBirthday extends HTMLElement {
+      constructor() {
+        super();
+        // Attach a shadow DOM to encapsulate styles and markup
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.innerHTML = `
+          <style>
+            /* Card container styling */
+            .card {
+              background: #fff7f8;
+              border: 3px dashed #ff69b4;
+              border-radius: 15px;
+              padding: 20px;
+              text-align: center;
+              width: 300px;
+              margin: 50px auto;
+              font-family: 'Comic Sans MS', cursive, sans-serif;
+              position: relative;
+              /* Allow confetti to escape the boundaries for extra fun */
+              overflow: visible;
+              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            /* Wiggle animation for the headline */
+            .card h1 {
+              font-size: 2.2em;
+              margin: 0 0 10px;
+              animation: wiggle 1s ease-in-out infinite;
+            }
+            @keyframes wiggle {
+              0%   { transform: rotate(0deg); }
+              25%  { transform: rotate(5deg); }
+              50%  { transform: rotate(0deg); }
+              75%  { transform: rotate(-5deg); }
+              100% { transform: rotate(0deg); }
+            }
+            /* Cake styling with a bouncing effect */
+            .cake {
+              width: 80px;
+              height: 80px;
+              background: #d2691e;
+              border-radius: 50%;
+              margin: 20px auto;
+              position: relative;
+              animation: bounce 2s infinite;
+            }
+            .cake::after {
+              content: "";
+              position: absolute;
+              top: -20px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 10px;
+              height: 30px;
+              background: yellow;
+              border-radius: 5px;
+            }
+            @keyframes bounce {
+              0%, 100% { transform: translateY(0); }
+              50% { transform: translateY(-10px); }
+            }
+            /* Confetti styling and animation */
+            .confetti {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              overflow: visible;
+            }
+            .confetti-piece {
+              position: absolute;
+              width: 8px;
+              height: 8px;
+              background: #ff69b4;
+              opacity: 0;
+              animation: confetti 3s linear infinite;
+            }
+            @keyframes confetti {
+              0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+              }
+              100% {
+                opacity: 0;
+                transform: translateY(120px) rotate(360deg);
+              }
+            }
+          </style>
+          <div class="card">
+            <h1>Happy Birthday Annika!</h1>
+            <div class="cake"></div>
+            <p>Hope your day is as sweet and fun as you are!</p>
+            <div class="confetti">
+              <!-- Five confetti pieces with staggered animation delays -->
+              <div class="confetti-piece" style="left:10%; animation-delay: 0s;"></div>
+              <div class="confetti-piece" style="left:30%; animation-delay: 0.5s;"></div>
+              <div class="confetti-piece" style="left:50%; animation-delay: 1s;"></div>
+              <div class="confetti-piece" style="left:70%; animation-delay: 1.5s;"></div>
+              <div class="confetti-piece" style="left:90%; animation-delay: 2s;"></div>
+            </div>
+          </div>
+        `;
+      }
+    }
+    // Register the custom element so it can be used as <annika-birthday>
+    customElements.define('annika-birthday', AnnikaBirthday);
+  </script>
+
 </body>
 </html>
