@@ -7,7 +7,77 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
    crossorigin="anonymous">
-   <link rel="stylesheet" href="birthday.css">
+  <style>
+    body {
+      background-color: darkgrey;
+      color: white;
+      margin-top: 150px;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spacer {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .border {
+      border: 1px solid black !important;
+      padding: 0;
+      margin: 0;
+    }
+
+    .col-6, .col-sm-3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      margin: 10px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card-img-top, .card-video-top {
+      width: 100%;
+      height: auto;
+      max-height: 150px;
+      margin: 0;
+    }
+
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .fairyKing {
+      width: 100px;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,18 +86,18 @@
   </div>
 
   <div class="spacer d-flex flex-column align-items-center justify-content-center">
-    <img class="fairyKing" src="/images/fairyking13.jpg" class="img-fluid mb-2">
+    <img class="fairyKing" src="https://i.imgur.com/RdDdFFL.gif" class="img-fluid mb-2">
     <p class="text-center">You are a year wiser, young wizard! +1 int!
       Below are some services that might interest you &#128522;</p>
     <p>  </p>
-  </div> <!-- Spacer div -->
+  </div>
 
   <div class="container text-center">
     <div class="row justify-content-center g-3 mb-3">
         <div class="col-6 col-sm-3 border">
           <div class="card">
             <video class="card-video-top" controls>
-              <source src="/images/touraustralia.mp4" type="video/mp4">
+              <source src="https://i.imgur.com/HJnHhLi.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="card-body">
@@ -38,7 +108,7 @@
         </div>
         <div class="col-6 col-sm-3 border">
           <div class="card">
-            <img src="/images/Portdelivery.gif" class="card-img-top" alt="Port Delivery">
+            <img src="https://i.imgur.com/n8WMyEz.gif" class="card-img-top" alt="Port Delivery">
             <div class="card-body">
               <h5 class="card-title">Speedy's Portugese Delivery Service</h5>
               <p class="card-text">So fast you'll never even know we were there!</p>
@@ -49,7 +119,7 @@
     <div class="row justify-content-center g-3 mb-3">
         <div class="col-6 col-sm-3 border">
           <div class="card">
-            <img src="/images/laptoprepair.gif" class="card-img-top" alt="Laptop Repair">
+            <img src="https://i.imgur.com/4ItIP3C.gif" class="card-img-top" alt="Laptop Repair">
             <div class="card-body">
               <h5 class="card-title">Premium Laptop Repair</h5>
               <p class="card-text">Turn around times quick as 6 to 8 months!</p>
@@ -58,7 +128,7 @@
         </div>
         <div class="col-6 col-sm-3 border">
           <div class="card">
-            <img src="/images/costanca.gif" class="card-img-top" alt="Costanca">
+            <img src="https://i.imgur.com/6vlgzIk.gif" class="card-img-top" alt="Costanca">
             <div class="card-body">
               <h5 class="card-title">Costanca AI companion</h5>
               <p class="card-text">There's never a quiet moment with her by your side!</p>
@@ -69,7 +139,7 @@
     <div class="row justify-content-center g-3 mb-3">
         <div class="col-6 col-sm-3 border">
           <div class="card">
-            <img src="/images/excavator.gif" class="card-img-top" alt="Excavator">
+            <img src="https://i.imgur.com/izSxcfa.gif" class="card-img-top" alt="Excavator">
             <div class="card-body">
               <h5 class="card-title">Excavators Wanted</h5>
               <p class="card-text">Now hiring passionate Diggers.
@@ -79,7 +149,7 @@
         </div>
         <div class="col-6 col-sm-3 border">
           <div class="card">
-            <img src="/images/AAA.jpg" class="card-img-top" alt="AAA">
+            <img src="https://i.imgur.com/pJHgwSO.jpg" class="card-img-top" alt="AAA">
             <div class="card-body">
               <h5 class="card-title">Achievement Addicts Anonymous</h5>
               <p class="card-text"> You are not alone! Thousands of people struggle
@@ -90,19 +160,15 @@
     </div>
   </div>
 
-  <!-- Use our custom birthday component -->
   <annika-birthday></annika-birthday>
 
   <script>
-    // Define a custom element for Annika's birthday card
     class AnnikaBirthday extends HTMLElement {
       constructor() {
         super();
-        // Attach a shadow DOM to encapsulate styles and markup
         const shadow = this.attachShadow({ mode: 'open' });
         shadow.innerHTML = `
           <style>
-            /* Card container styling */
             .card {
               background: #fff7f8;
               border: 3px dashed #ff69b4;
@@ -113,11 +179,9 @@
               margin: 50px auto;
               font-family: 'Comic Sans MS', cursive, sans-serif;
               position: relative;
-              /* Allow confetti to escape the boundaries for extra fun */
               overflow: visible;
               box-shadow: 0 0 10px rgba(0,0,0,0.1);
             }
-            /* Wiggle animation for the headline */
             .card h1 {
               font-size: 2.2em;
               margin: 0 0 10px;
@@ -130,7 +194,6 @@
               75%  { transform: rotate(-5deg); }
               100% { transform: rotate(0deg); }
             }
-            /* Cake styling with a bouncing effect */
             .cake {
               width: 80px;
               height: 80px;
@@ -155,7 +218,6 @@
               0%, 100% { transform: translateY(0); }
               50% { transform: translateY(-10px); }
             }
-            /* Confetti styling and animation */
             .confetti {
               position: absolute;
               top: 0;
@@ -189,7 +251,6 @@
             <div class="cake"></div>
             <p>Hope your day is as sweet and fun as you are!</p>
             <div class="confetti">
-              <!-- Five confetti pieces with staggered animation delays -->
               <div class="confetti-piece" style="left:10%; animation-delay: 0s;"></div>
               <div class="confetti-piece" style="left:30%; animation-delay: 0.5s;"></div>
               <div class="confetti-piece" style="left:50%; animation-delay: 1s;"></div>
@@ -200,7 +261,6 @@
         `;
       }
     }
-    // Register the custom element so it can be used as <annika-birthday>
     customElements.define('annika-birthday', AnnikaBirthday);
   </script>
 
